@@ -3,62 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffff"
     tools:context=".TermsandConditionsActivity">
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="start"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
 
-        <TextView
+        <!-- <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/allerbold"
+             android:gravity="center"
+             android:text="Financial Risk Profilling"
+             android:textSize="28sp" />-->
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo" />
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/allerbold"
-            android:gravity="center"
-            android:text="Alternative Credit Scoring"
-            android:textSize="28sp" />
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/allerlight"
+                android:gravity="center"
+                android:text="We use metadata in your smartphone to help you build a credit profile so we could offer you financial services with the best options and lowest prices.\n\nWe do not access, store or edit your Personal Information and we strictly comply with the Personal Data Protection Act 2010.\n\nPlease provide your consent for us to access your smartphone data before we start our profiling."
+                android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/allerbold"
-            android:gravity="center"
-            android:text="Thanks for downloading ACS App!"
-            android:textSize="25sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/allerlight"
-            android:gravity="center"
-            android:text="Thanks for downloading ACS App!
-The ACS App collect some basic
-information on Hardware/Software,
-Call log, SMS data, Contacts list,
-Calendar Events, location, etc. This
-will be used to calculate your
-Alternate Credit Score."
-            android:textSize="22sp" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/allerlight"
-            android:gravity="center"
-            android:text="By clicking the button below you
-accept the terms &amp; conditions."
-            android:textSize="17sp" />
-
+        </ScrollView>
 
     </LinearLayout>
-
 
     <Button
         android:id="@+id/proceedbtn"
@@ -71,6 +58,5 @@ accept the terms &amp; conditions."
         android:fontFamily="@font/allerbold"
         android:text="Proceed"
         android:textColor="@color/whitecolor" />
-
 
 </RelativeLayout>

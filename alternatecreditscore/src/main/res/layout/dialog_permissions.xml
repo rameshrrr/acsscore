@@ -24,8 +24,9 @@
         android:layout_marginRight="10dp"
         android:fontFamily="@font/allerbold"
         android:gravity="center"
-        android:text="We need approval for access in order for you to start using this application."
+        android:text="We require access to the following to \n generate your credit score"
         android:textColor="@color/black"
+
         android:textSize="11sp" />
 
 
@@ -69,13 +70,13 @@
                 android:textSize="13sp" />
 
 
-            <TextView
+            <!--<TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerregular"
                 android:text="For Recommending the Nearby Doctors around you."
                 android:textColor="@color/black"
-                android:textSize="11sp" />
+                android:textSize="11sp" />-->
 
 
         </LinearLayout>
@@ -127,13 +128,13 @@
                 android:textSize="13sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/allerregular"
-                android:text="To store Multimedia in the Local Storage"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+            <!--  <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/allerregular"
+                  android:text="To store Multimedia in the Local Storage"
+                  android:textColor="@color/black"
+                  android:textSize="11sp" />-->
 
 
         </LinearLayout>
@@ -185,13 +186,13 @@
                 android:textSize="13sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/allerregular"
-                android:text="To let the app read the SMS in the application"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+            <!--  <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/allerregular"
+                  android:text="To let the app read the SMS in the application"
+                  android:textColor="@color/black"
+                  android:textSize="11sp" />-->
 
 
         </LinearLayout>
@@ -243,13 +244,13 @@
                 android:textSize="13sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/allerregular"
-                android:text="To let the app read the Telephonic Service in the application"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+            <!-- <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:fontFamily="@font/allerregular"
+                 android:text="To let the app read the Telephonic Service in the application"
+                 android:textColor="@color/black"
+                 android:textSize="11sp" />-->
 
 
         </LinearLayout>
@@ -301,13 +302,13 @@
                 android:textSize="13sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/allerregular"
-                android:text="To let the app read the Calender Events in the application"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+            <!-- <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:fontFamily="@font/allerregular"
+                 android:text="To let the app read the Calender Events in the application"
+                 android:textColor="@color/black"
+                 android:textSize="11sp" />-->
 
 
         </LinearLayout>
@@ -359,13 +360,13 @@
                 android:textSize="13sp" />
 
 
-            <TextView
+            <!--<TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerregular"
                 android:text="To let the app read the Contacts in the application"
                 android:textColor="@color/black"
-                android:textSize="11sp" />
+                android:textSize="11sp" />-->
 
 
         </LinearLayout>
@@ -417,13 +418,13 @@
                 android:textSize="13sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/allerregular"
-                android:text="To let the app read the Call Log in the application"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+            <!-- <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:fontFamily="@font/allerregular"
+                 android:text="To let the app read the Call Log in the application"
+                 android:textColor="@color/black"
+                 android:textSize="11sp" />-->
 
 
         </LinearLayout>
