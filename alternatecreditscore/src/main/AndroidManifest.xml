@@ -53,11 +53,7 @@
         <activity android:name=".FinalActivity" />
         <activity android:name=".CommonFetchingActivity" />
         <activity android:name=".TermsandConditionsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ShowTextActivity" />
         <activity android:name=".UploadShowTextActivity" />
