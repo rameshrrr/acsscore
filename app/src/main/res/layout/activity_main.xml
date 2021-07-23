@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/hardsoftinfobtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="Hardware Software Info"
+            android:textColor="@color/whitecolor" />
+
+        <Button
+            android:id="@+id/callhistorybtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="Call History"
+            android:textColor="@color/whitecolor" />
+
+
+        <Button
+            android:id="@+id/smslistbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="SMS LIST"
+            android:textColor="@color/whitecolor" />
+
+
+        <Button
+            android:id="@+id/calendereventsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="CALENDER EVENTS"
+            android:textColor="@color/whitecolor" />
+
+
+        <Button
+            android:id="@+id/allphoneappsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="PHONE APPS"
+            android:textColor="@color/whitecolor" />
+
+        <Button
+            android:id="@+id/allcatwisephoneappsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="Category PHONE APPS"
+            android:textColor="@color/whitecolor" />
+
+        <Button
+            android:id="@+id/allphoneappsusagebtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="PHONE APPS USAGE"
+            android:textColor="@color/whitecolor" />
+
+        <Button
+            android:id="@+id/contactslistbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="CONTACTS LIST"
+            android:textColor="@color/whitecolor" />
+
+
+        <Button
+            android:id="@+id/videosbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="VIDEOS"
+            android:textColor="@color/whitecolor" />
+
+        <Button
+            android:id="@+id/imagesbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="IMAGES"
+            android:textColor="@color/whitecolor" />
+
+
+        <Button
+            android:id="@+id/locationbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="Location"
+            android:textColor="@color/whitecolor" />
+
+
+        <Button
+            android:id="@+id/showtextstbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/homebtnbg"
+            android:fontFamily="@font/allerbold"
+            android:text="Show Texts"
+            android:textColor="@color/whitecolor" />
+
+
+    </LinearLayout>
+
+</ScrollView>

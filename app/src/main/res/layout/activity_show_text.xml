@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowTextActivity">
+
+    <ScrollView
+        android:layout_above="@+id/uploadtoserverbtn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ShowTextActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/texttv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerregular"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/uploadtoserverbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="17dp"
+        android:background="@drawable/homebtnbg"
+        android:fontFamily="@font/allerbold"
+        android:text="Upload to server"
+        android:textColor="@color/whitecolor" />
+
+
+<include
+    layout="@layout/loaderlayout"/>
+</RelativeLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whitecolor"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/appiconiv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:padding="4dp"
+                    android:contentDescription="TODO" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/appiconiv"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/appnametv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/allerbold"
+                        android:text="App Name"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/apppackagenametv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/allerregular"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/blackcolor"
+                        android:text="App Package Name"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/appversionnametv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/allerregular"
+                        android:layout_marginTop="5dp"
+                        android:text="App Version Name"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/categorynametv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/allerregular"
+                        android:layout_marginTop="5dp"
+                        android:text="Cat Name"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

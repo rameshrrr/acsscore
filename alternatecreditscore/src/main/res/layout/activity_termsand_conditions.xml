@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TermsandConditionsActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/allerbold"
+            android:gravity="center"
+            android:text="Alternative Credit Scoring"
+            android:textSize="28sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/allerbold"
+            android:gravity="center"
+            android:text="Thanks for downloading ACS App!"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/allerlight"
+            android:gravity="center"
+            android:text="Thanks for downloading ACS App!
+The ACS App collect some basic
+information on Hardware/Software,
+Call log, SMS data, Contacts list,
+Calendar Events, location, etc. This
+will be used to calculate your
+Alternate Credit Score."
+            android:textSize="22sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/allerlight"
+            android:gravity="center"
+            android:text="By clicking the button below you
+accept the terms &amp; conditions."
+            android:textSize="17sp" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/proceedbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="17dp"
+        android:background="@drawable/homebtnbg"
+        android:fontFamily="@font/allerbold"
+        android:text="Proceed"
+        android:textColor="@color/whitecolor" />
+
+
+</RelativeLayout>

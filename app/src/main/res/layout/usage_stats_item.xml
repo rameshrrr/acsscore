@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/package_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/allerregular"
+        android:maxLines="1"
+        android:paddingStart="12dip"
+        android:paddingEnd="6dip"
+        android:text="App Name"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/last_time_used"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/allerregular"
+        android:maxLines="1"
+        android:paddingStart="12dip"
+        android:paddingEnd="6dip"
+        android:text="Last Used at"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/usage_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/allerregular"
+        android:maxLines="1"
+        android:paddingStart="12dip"
+        android:paddingEnd="6dip"
+        android:text="Total Time Used"
+        android:textSize="12sp" />
+</LinearLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Alternate Credit Scoring</string>
+    <string name="last_time_used_label">Last Used</string>
+    <string name="usage_time_label">Usage Time</string>
+    <string name="app_name_label">App Name</string>
+    <string name="display_order_text">"Order By "</string>
+
+    <string name="folderName">Folder Name</string>
+    <string name="appName">Simple Image Gallery</string>
+    <string name="empty">No Images on this device</string>
+
+    <string name="photos_name">Photos</string>
+
+
+</resources>
