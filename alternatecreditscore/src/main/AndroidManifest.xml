@@ -38,19 +38,27 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".Signatureview"></activity>
+        <activity android:name=".Signatureview"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoAppTheme" ></activity>
         <activity android:name=".FinalActivity" />
         <activity android:name=".CommonFetchingActivity" />
-        <activity android:name=".TermsandConditionsActivity" />
+        <activity android:name=".TermsandConditionsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ShowTextActivity" />
         <activity android:name=".UploadShowTextActivity" />
         <activity android:name=".StartCommonFetchingActivity" />
@@ -101,11 +109,7 @@
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoAppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".simpleimagegallery.ImagesMainActivity"
