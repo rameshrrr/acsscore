@@ -327,7 +327,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                 humanReadableByteCountBin(MemoryStatus.getTotalExternalMemorySize()) + ",  " + humanReadableByteCountBin(MemoryStatus.getAvailableExternalMemorySize()) + ",  " +
                 deviceName + ",  " + deviceMan + " " + "\n");
 
-
+        new SavePref(this).setHardSoftInfo(sb.toString());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
