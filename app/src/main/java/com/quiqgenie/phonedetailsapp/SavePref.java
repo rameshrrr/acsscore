@@ -96,7 +96,28 @@ public class SavePref {
         editor.apply();
     }
 
+    public static String getrejectedcall() {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        return prefs.getString("setrejectedcall", "");
+    }
 
+    public static void setrejectedcall(String value) {
+        SharedPreferences sharedPref = context.getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("setrejectedcall", value);
+        editor.apply();
+    }
+    public static String getblockedcall() {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        return prefs.getString("setblockedcall", "");
+    }
+
+    public static void setblockedcall(String value) {
+        SharedPreferences sharedPref = context.getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("setblockedcall", value);
+        editor.apply();
+    }
 
     public static String getInstalledApps() {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);

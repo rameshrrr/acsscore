@@ -21,7 +21,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,44 +42,44 @@ public class Signatureview extends AppCompatActivity {
 
     private SignatureView signatureView;
     Button sub1;
+    CheckBox b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popupwindow);//see xml layout
-        signatureView = findViewById(R.id.signature_view);
-        ImageView clear = (ImageView) findViewById(R.id.clear);
+
+        b1=findViewById(R.id.checkBox);
         sub1=findViewById(R.id.sub1);
-        int colorPrimary = ContextCompat.getColor(this, R.color.colorAccent);
-        signatureView.setPenColor(colorPrimary);
-        // or like signatureView.setPenColor(Color.RED);
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signatureView.clearCanvas();
-            }
-        });
         sub1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (abc()) {
-                    startActivity(new Intent(Signatureview.this,
-                            StartCommonFetchingActivity.class));
-                } else {
-                    if (Build.VERSION.SDK_INT >= 21) {
-                        UsageStatsManager mUsageStatsManager = (UsageStatsManager) Signatureview.this.getSystemService(Context.USAGE_STATS_SERVICE);
-                        long time = System.currentTimeMillis();
-                        List stats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, time - 1000 * 10, time);
 
-                        if (stats == null || stats.isEmpty()) {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_USAGE_ACCESS_SETTINGS);
-                            startActivity(intent);
+if(b1.isChecked()){
+    if (abc()) {
+        startActivity(new Intent(Signatureview.this,
+                StartCommonFetchingActivity.class));
+    } else {
+        if (Build.VERSION.SDK_INT >= 21) {
+            UsageStatsManager mUsageStatsManager = (UsageStatsManager) Signatureview.this.getSystemService(Context.USAGE_STATS_SERVICE);
+            long time = System.currentTimeMillis();
+            List stats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, time - 1000 * 10, time);
+
+            if (stats == null || stats.isEmpty()) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+                startActivity(intent);
 
 
-                        }
-                    }
-                }
             }
+        }
+    }
+}else{
+    Toast.makeText(Signatureview.this,"Please accept terms and condition ", Toast.LENGTH_LONG).show();
+}
+
+
+                }
+
         });
     }
     public Boolean abc() {

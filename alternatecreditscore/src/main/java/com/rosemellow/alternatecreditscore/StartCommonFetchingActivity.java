@@ -140,14 +140,15 @@ public class StartCommonFetchingActivity extends LocationActivity  {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mPhoneNumber = tMgr.getLine1Number();
-           /* List<SubscriptionInfo> subscription = SubscriptionManager.from(getApplicationContext()).getActiveSubscriptionInfoList();
+            List<SubscriptionInfo> subscription = SubscriptionManager.from(getApplicationContext()).getActiveSubscriptionInfoList();
             for (int i = 0; i < subscription.size(); i++) {
                 SubscriptionInfo info = subscription.get(i);
                 mPhoneNumber=info.getNumber();
                 Log.e("TAG", "numberramesh " + info.getNumber());
                 Log.e("TAG", "network name : " + info.getCarrierName());
                 Log.e("TAG", "country iso " + info.getCountryIso());
-            }*/
+            }
+
         }
 
 
@@ -163,7 +164,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
         returnbutton = findViewById(R.id.returnbutton);
         ll1.setVisibility(View.VISIBLE);
         ll2.setVisibility(View.GONE);
-
+// returnbutton = findViewById(R.id.returnbutton);
         returnbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,7 +172,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
             }
         });
         getHwSwInfor();
-        getIMEIDeviceId(this);
+        getIMEIDeviceId11();
 
     }
 
@@ -197,66 +198,69 @@ public class StartCommonFetchingActivity extends LocationActivity  {
             running = true;
         }
     }
-    public String getIMEIDeviceId(Context context) {
+    public  String getIMEIDeviceId11() {
 
-        String deviceId = null;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
-        {
-            deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-        } else {
-            final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS)  != PackageManager.PERMISSION_GRANTED) {
-                    return "";
-                }
-            }
-            assert mTelephony != null;
-
-            if (mTelephony.getDeviceId() != null)
-            {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                {
-                    deviceId = mTelephony.getImei();
-                }else {
-                    deviceId = mTelephony.getDeviceId();
+        String deviceId =null ;
+        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                if (telephonyManager != null) {
+                    try {
+                        deviceId = telephonyManager.getImei();
+                        new SavePref(this).setMyIMEI("IMEI NUMBER Or DEVICE ID:"+deviceId);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+                        new SavePref(this).setMyIMEI("IMEI NUMBER Or DEVICE ID:"+deviceId);
+                    }
                 }
             } else {
-                deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+                ActivityCompat.requestPermissions(StartCommonFetchingActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1010);
             }
-
+        } else {
+            if (ActivityCompat.checkSelfPermission(StartCommonFetchingActivity.this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                if (telephonyManager != null) {
+                    deviceId = telephonyManager.getDeviceId();
+                    new SavePref(this).setMyIMEI("IMEI NUMBER Or DEVICE ID:"+deviceId);
+                }
+            } else {
+                ActivityCompat.requestPermissions(StartCommonFetchingActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1010);
+            }
         }
-        new SavePref(this).setMyIMEI("IMEI NUMBER Or DEVICE ID:"+deviceId);
-        Log.d("deviceIdram", deviceId);
         return deviceId;
     }
-    // Start the stopwatch running
-    // when the Start button is clicked.
-    // Below method gets called
-    // when the Start button is clicked.
-    public void onClickStart(View view)
-    {
-        running = true;
-    }
+    /* public  String getIMEIDeviceId1(Context context) {
 
-    // Stop the stopwatch running
-    // when the Stop button is clicked.
-    // Below method gets called
-    // when the Stop button is clicked.
-    public void onClickStop(View view)
-    {
-        running = false;
-    }
+         String deviceId;
 
-    // Reset the stopwatch when
-    // the Reset button is clicked.
-    // Below method gets called
-    // when the Reset button is clicked.
-    public void onClickReset(View view)
-    {
-        running = false;
-        seconds = 0;
-    }
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+         {
+             deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+         } else {
+             final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                 if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                     return "";
+                 }
+             }
+             assert mTelephony != null;
+             if (mTelephony.getDeviceId() != null)
+             {
+                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                 {
+                     deviceId = mTelephony.getImei();
+                 }else {
+                     deviceId = mTelephony.getDeviceId();
+                 }
+             } else {
+                 deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+                 new SavePref(this).setMyIMEI("IMEI NUMBER Or DEVICE ID:"+deviceId);
+             }
+         }
+
+         Log.d("deviceId", deviceId);
+         return deviceId;
+     }*/
     private void runTimer() {
 
         // Get the text view.
@@ -268,12 +272,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
         final Handler handler
                 = new Handler();
 
-        // Call the post() method,
-        // passing in a new Runnable.
-        // The post() method processes
-        // code without a delay,
-        // so the code in the Runnable
-        // will run almost immediately.
+
         handler.post(new Runnable() {
             @Override
 
@@ -307,6 +306,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
     }
 
     public void getHwSwInfor() {
+
         StringBuffer sb = new StringBuffer();
 
         sb.append("HARDWARE AND SOFTWARE INFORMATION" + "\n\n");
@@ -324,10 +324,9 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                 androidOS + ",  " + myAPI + ",  " +
                 deviceID + ",  " + RAMSize + ",  " +
                 humanReadableByteCountBin(MemoryStatus.getTotalInternalMemorySize()) + ",  " + humanReadableByteCountBin(MemoryStatus.getAvailableInternalMemorySize()) + ",  " +
-                humanReadableByteCountBin(MemoryStatus.getTotalExternalMemorySize()) + ",  " + humanReadableByteCountBin(MemoryStatus.getAvailableExternalMemorySize()) + ",  " +
-                deviceName + ",  " + deviceMan + " " + "\n");
-
+                humanReadableByteCountBin(MemoryStatus.getTotalExternalMemorySize()) + ",  " + humanReadableByteCountBin(MemoryStatus.getAvailableExternalMemorySize()) + ",  " + "\n");
         new SavePref(this).setHardSoftInfo(sb.toString());
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -482,7 +481,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
     private void getCallDetails() {
 
         StringBuffer sb = new StringBuffer();
-
+        StringBuffer sb1 = new StringBuffer();
         sb.append("CALL LOG" + "\n\n");
 
 
@@ -523,14 +522,23 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                     break;
                 case CallLog.Calls.BLOCKED_TYPE:
                     dir = "BLOCKED";
+
                     break;
                 case CallLog.Calls.REJECTED_TYPE:
                     dir = "Rejected";
-                   /* int number2 = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
-                    String phNum2 = managedCursor.getString(number2);
-
                     String currentDate = new SimpleDateFormat("dd MMM yyyy").format(callDayTime);
                     String currentTime = new SimpleDateFormat("hh:mm:ss").format(callDayTime);
+                    sb1.append(isoStr + " " + phNumber + ",  " +
+                            dir + ",  " +
+                            currentDate + " " + currentTime + "" +
+                            callDuration + ",  " +
+                            geocodeStr + ",  " +
+                            "\n");
+
+                    int number2 = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
+                    String phNum2 = managedCursor.getString(number2);
+
+
 
 
                     sb.append( phNum2 + ",  " +
@@ -539,7 +547,8 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                             "\n");
                     Log.e("calllog_ramesh", String.valueOf(sb));
                     //managedCursor.close();
-                    new SavePref(this).setCallLogData(sb.toString());*/
+                    new SavePref(this).setCallLogData(sb.toString());
+
                     break;
 
 
@@ -548,6 +557,15 @@ public class StartCommonFetchingActivity extends LocationActivity  {
 
             if(dir==null){
                 dir="BLOCKED";
+                String currentDate1 = new SimpleDateFormat("dd MMM yyyy").format(callDayTime);
+                String currentTime1 = new SimpleDateFormat("hh:mm:ss").format(callDayTime);
+                sb1.append(isoStr + " " + phNumber + ",  " +
+                        dir + ",  " +
+                        currentDate1 + " " + currentTime1 + "" +
+                        callDuration + ",  " +
+                        geocodeStr + ",  " +
+                        "\n");
+
             }
 
 
@@ -557,7 +575,7 @@ public class StartCommonFetchingActivity extends LocationActivity  {
 
             sb.append(isoStr + " " + phNumber + ",  " +
                     dir + ",  " +
-                    currentDate + " " + currentTime + "" +
+                    currentDate + " ," + currentTime + "," +
                     callDuration + ",  " +
                     geocodeStr + ",  " +
                     "\n");
@@ -927,9 +945,10 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                 getAppUsage();
 
                 new Handler().postDelayed(new Runnable() {
+
                     @Override
                     public void run() {
-
+                        sbfinal.append("Mobile Number:"+new SavePref(StartCommonFetchingActivity.this).getMyPhoneNumber() +"\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getLocation() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getHardSoftInfo() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getMyIMEI() + "\n\n");
@@ -942,8 +961,13 @@ public class StartCommonFetchingActivity extends LocationActivity  {
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getContactsList() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getImagesFolders() + "\n\n");
                         sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getVideosFolders() + "\n\n");
-                        sbfinal.append("##Phase 2##"+ "\n\n");
+                        /*sbfinal.append("##Phase 2##"+ "\n\n");
                         sbfinal.append("Rejected call list"+" ,"+"Blocked call list"+","+"IMEI number or Device id"+","+"User mobile number"+ "\n\n");
+                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getMyIMEI() + "\n\n");
+                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getblockedcall() + "\n\n");
+                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getrejectedcall() + "\n\n");
+                        sbfinal.append(new SavePref(StartCommonFetchingActivity.this).getMyPhoneNumber());*/
+
                         Log.e("EFwdefdsaxzdcefdcx", new SavePref(StartCommonFetchingActivity.this).getLocation());
 
                         Log.e("EFwdefdcefdcx", new SavePref(StartCommonFetchingActivity.this).getAppUsage());
@@ -1341,3 +1365,4 @@ public class StartCommonFetchingActivity extends LocationActivity  {
     }
 
 }
+

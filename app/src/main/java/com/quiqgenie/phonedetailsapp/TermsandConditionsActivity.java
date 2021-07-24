@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.app.usage.UsageStatsManager;
@@ -68,6 +69,7 @@ public class TermsandConditionsActivity extends BaseActivity {
     private View view;
     private SignatureView mSignature;
     private Bitmap bitmap;
+    String phoneNumber1=" ";
 
     // Creating Separate Directory for saving Generated Images
     String DIRECTORY = Environment.getExternalStorageDirectory().getPath() + "/Signature/";
@@ -75,18 +77,26 @@ public class TermsandConditionsActivity extends BaseActivity {
     String StoredPath = DIRECTORY + pic_name + ".png";
     private int  RESOLVE_PHONE_NUMBER_HINT = 1000;
     String mobNumber;
+    String currentVersion;
      GoogleApiClient googleApiClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_termsand_conditions);
 
-
+        try {
+            currentVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
         proceedbtn = findViewById(R.id.proceedbtn);
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Auth.CREDENTIALS_API)
                 .build();
-        requestHint();
+        if(new SavePref(this).getMyPhoneNumber().isEmpty()){
+            requestHint();
+        }
+
 
         proceedbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +123,14 @@ public class TermsandConditionsActivity extends BaseActivity {
                         }
                     }
                 }*/
-                startActivity(new Intent(TermsandConditionsActivity.this, Signatureview.class));
+                if(phoneNumber1==" "){
+                    Toast.makeText(getApplicationContext(),"Please select mobile number",Toast.LENGTH_LONG).show();
+                    requestHint();
+
+                }else {
+                    startActivity(new Intent(TermsandConditionsActivity.this, Signatureview.class));
+                }
+
 
                 //showPopupWindow(view);
 
@@ -158,9 +175,12 @@ public class TermsandConditionsActivity extends BaseActivity {
         if (requestCode == RESOLVE_PHONE_NUMBER_HINT && resultCode == RESULT_OK) {
             Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
             final String phoneNumber = credential.getId();
+            phoneNumber1=credential.getId();
             new SavePref(this).setMyPhoneNumber(phoneNumber);
 
-            Log.e("rammmkska",new SavePref(this).getMyPhoneNumber());
+
+
+            Log.e("rammmkska",phoneNumber1);
         }
 
     }
@@ -237,6 +257,33 @@ public class TermsandConditionsActivity extends BaseActivity {
         //Handler for clicking on the inactive zone of the window
 
     }*/
+   public  String getIMEIDeviceId11() {
 
+       String deviceId = null;
+       TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+           if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+               if (telephonyManager != null) {
+                   try {
+                       deviceId = telephonyManager.getImei();
+                   } catch (Exception e) {
+                       e.printStackTrace();
+                       deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+                   }
+               }
+           } else {
+               ActivityCompat.requestPermissions(TermsandConditionsActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1010);
+           }
+       } else {
+           if (ActivityCompat.checkSelfPermission(TermsandConditionsActivity.this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+               if (telephonyManager != null) {
+                   deviceId = telephonyManager.getDeviceId();
+               }
+           } else {
+               ActivityCompat.requestPermissions(TermsandConditionsActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1010);
+           }
+       }
+       return deviceId;
+   }
 
 }
